@@ -1,7 +1,7 @@
 const {Command} = require('commander')
 const program = new Command()
 const {prompt} = require('inquirer')
-const { addBooks, findBook } = require('.')
+const { addBooks, findBook, updateBook, deleteBook, booksList } = require('.')
 
 program
     .version('1.1.10')
@@ -48,5 +48,25 @@ program
     .alias('f')
     .description('Find Book')
     .action((name) => findBook(name))
+
+program
+    .command('update <_id>')
+    .alias('u')
+    .description('Update Book')
+    .action(_id => {
+      prompt(questions).then(answers => updateBook(_id, answers))
+    })
+
+program
+    .command('remove <_id>')
+    .alias('r')
+    .description('Remove Book')
+    .action(_id => deleteBook(_id))
+
+program
+    .command('list')
+    .alias('l')
+    .description('Get All Books')
+    .action(() => booksList())
 
 program.parse(process.argv)
