@@ -22,4 +22,4 @@ _Dependencies_
 
 > _image preview_
 
-![code preview](images/preview.png)
+![code preview](images/preview.png "code preview")
